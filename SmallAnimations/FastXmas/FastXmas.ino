@@ -15,7 +15,7 @@
 #define DATA_PIN          2
 #define NUM_LEDS          26
 #define BRIGHTNESS        64
-#define NUM_XMAS_PIXELS   NUM_LEDS/4
+#define NUM_XMAS_PIXELS   NUM_LEDS/4 // Change this to a lower value to add more pixels!
 
 bool _runonce =           true;
 CRGB leds[NUM_LEDS];
@@ -52,8 +52,9 @@ void xmasmode() {
       xmas_pos[i] = freepos(); // Choose new open position.
       xmas_color[i] = random(3); // randomize the new color.
     }
-    xmas_val[i]++; // Add 1 for ever. after 255 it will wrap back to 0. 
-    // try  += 2 or 3 to speed up the animation. You can also use floats too if you want more control.
+    xmas_val[i] ++; // Add 1 for ever. After 255 it will wrap back to 0. 
+    
+    
     switch (xmas_color[i]) {
       case 0: leds[xmas_pos[i]] = CHSV(0,255,sin8(xmas_val[i])); break;
       case 1: leds[xmas_pos[i]] = CHSV(96,255,sin8(xmas_val[i])); break;
